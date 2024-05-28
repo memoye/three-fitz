@@ -1,10 +1,11 @@
 const config = {
-  development: {
-    backendUrl: "http://localhost:8080/api/v1/dalle",
-  },
-  production: {
-    backendUrl: "https://devswag.onrender.com/api/v1/dalle",
-  },
+  // development: {
+  AIEndpoint: `${import.meta.env.VITE_BACKEND_URL}/api/v1/dalle`,
+  // backendUrl: `${import.meta.env.VITE_BACKEND_URL}/api/v1/ai-text-to-image`,
+  // },
+  // production: {
+  //   backendUrl: `${import.meta.env.VITE_BACKEND_URL}/api/v1/ai-text-to-image`,
+  // },
 };
 
 export default config;

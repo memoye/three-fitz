@@ -1,5 +1,6 @@
 import express from "express";
 import axios from "axios";
+import OpenAI from "openai";
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.post("/", async (req, res) => {
     headers: {
       "content-type": "application/json",
       "X-RapidAPI-Key": process.env.RAPID_API_KEY,
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       "X-RapidAPI-Host": "ai-text-to-image-generator-api.p.rapidapi.com",
     },
     data: {
@@ -30,8 +32,8 @@ router.post("/", async (req, res) => {
     const response = await axios.request(options);
     const image = response.data;
 
+    console.log("Image generated successfully", image.url);
     res.json({ photo: image.url });
-    console.log("Image generated successfully");
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong!" });

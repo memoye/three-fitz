@@ -54,8 +54,22 @@ export default function Customizer() {
     try {
       // call backend to generate AI image
       setGeneratingImg(true);
+      const response = await fetch(config.AIEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt,
+        }),
+        // mode: "cors",
+      });
+
+      const data = await response.json();
+      handleDecals(type, data.photo);
     } catch (error) {
-      alert(error);
+      alert("client error", error);
+      console.log(error);
     } finally {
       setGeneratingImg(false);
       setActiveEditorTab("");
