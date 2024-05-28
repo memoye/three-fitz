@@ -18,9 +18,9 @@ export default function Home() {
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.header {...slideAnimation("down")}>
             <img
-              src="/threejs.png"
+              src="/logo.ico"
               alt="logo"
-              className="h-8 w-8 object-contain"
+              className="h-14 w-14 rotate-[60deg] object-contain"
             />
           </motion.header>
 

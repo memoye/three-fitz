@@ -15,6 +15,7 @@ import {
   FilePicker,
   Tab,
 } from "../components";
+import toast from "react-hot-toast";
 
 export default function Customizer() {
   const snap = useSnapshot(state);
@@ -66,10 +67,24 @@ export default function Customizer() {
       });
 
       const data = await response.json();
-      handleDecals(type, data.photo);
+      // console.log(data);
+
+      handleDecals(type, data?.data);
+
+      // if (data.image)
+      // console.log(data.error.error.message);
+      // if (data.error)
+      // throw Error(data?.error?.error?.message || "Something went wrong");
     } catch (error) {
-      alert("client error", error);
-      console.log(error);
+      toast.error(String(error), {
+        icon: "❌",
+        style: {
+          borderRadius: "5px",
+          background: "#330000ee",
+          border: "1px solid red",
+          color: "#fff",
+        },
+      });
     } finally {
       setGeneratingImg(false);
       setActiveEditorTab("");
@@ -87,6 +102,7 @@ export default function Customizer() {
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
+        break;
     }
 
     // after setting the state, set the activeFilterTab to update the UI

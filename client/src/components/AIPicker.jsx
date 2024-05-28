@@ -33,7 +33,7 @@ export default function AIPicker({
 
             <CustomButton
               type="filled"
-              title="AI Logo"
+              title="AI Full"
               handleClick={() => handleSubmit("full")}
               customStyles="text-xs"
             />
