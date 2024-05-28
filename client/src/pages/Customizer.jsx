@@ -139,7 +139,7 @@ export default function Customizer() {
             className="absolute left-0 top-0 z-10"
             {...slideAnimation("left")}
           >
-            <div className="flex min-h-screen items-center ">
+            <div className="flex min-h-screen items-center">
               <div className="editortabs-container tabs">
                 {EditorTabs.map((t) => (
                   <Tab
@@ -149,6 +149,15 @@ export default function Customizer() {
                   />
                 ))}
                 {generateTabContent()}
+
+                <button
+                  className={`rounded-md border border-dashed border-red-500 px-1.5 py-1 text-xs font-semibold uppercase text-red-500 ${
+                    activeEditorTab !== "" ? "visible" : "invisible"
+                  }`}
+                  onClick={() => setActiveEditorTab("")}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </motion.div>

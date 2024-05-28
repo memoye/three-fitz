@@ -11,7 +11,7 @@ export default function AIPicker({
       <textarea
         className="aipicker-textarea"
         rows={5}
-        placeholder="Ask AI..."
+        placeholder="Ask AI... Try `generate a smooth gradient pattern for a shirt`"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
       />
